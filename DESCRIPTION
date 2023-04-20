@@ -1,7 +1,7 @@
 Package: ak412s
 Type: Package
 Title: ak412s
-Version: 0.0.2305
+Version: 0.0.2306
 Author: Sangseok Bae
 Maintainer: <ssb9018@ajou.ac.kr>
 Description: Package for the class 'Statistics for Public Administration and Data Analysis'
