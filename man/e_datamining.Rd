@@ -9,48 +9,52 @@ e_datamining Program
 }
 \examples{
 
-library(readxl); library(dplyr) 
-Adata<-read_excel('Data0_자료1.xlsx') 
------------------------------------------------------
+## 내장데이터: 
+library(readxl); library(dplyr)
+
 seq(1, 12, 3) 
 rep(NA, 12) 
-Adata$편의성[Adata$편의성==5]<-4 
-Adata[Adata==''] <- NA 
-Adata[Adata=='NA']<-NA 
-Adata<-Adata[complete.cases(Adata$편의성, Adata$가격만족, Adata$연령대), ] 
------------------------------------------------------
-sum(Adata$브랜드=='Ford') 
-sum(is.na(Adata$브랜드)) 
+
+df<-read.csv('자료1.csv', fileEncoding = 'CP949', encoding = 'UTF-8', skip=0, header=F)
+df<-read_excel('자료1.xlsx')
+
+## 변수를 선택해서 새 데이터셋으로 만들기
+인덱스 <- c(2,4,6)
+새데이터셋 <- df[ , 인덱스]
+
+## 자료를 솎아내서 새데이터셋 만들기
+새데이터셋 <- df[ df$debtratio !=Inf , ]
+새데이터셋 <- df[ !is.na(df$debtratio) , ]
+새데이터셋 <- df[ df$debtratio <= 124 , ]
+새데이터셋 <- df[ complete.cases(df$편의성, df$가격만족, df$연령대), ] 
+
+df$편의성2[df$conv==5] <- 4
+df$성별2[df$gender==2] <- 0
+df[df==''] <- NA 
+
+sum(is.na(df$브랜드)) 
 sum(!is.na(Adata$브랜드)) 
------------------------------------------------------
-Adata<-Adata%>%filter( 가격만족>mean(가격만족) ) 
-Adata<-select(Adata, 편의성, 가격만족, 성별) 
-Adata<-arrange(Adata, 편의성) 
-Adata<-rename(Adata, 새변수명=구변수명) 
------------------------------------------------------
-재코딩 방법1 
-Adata<-read_excel('자료2.xlsx', sheet=3, skip=6) 
-Adata$gender[Adata$gender=='①']<-1 # gender의 재코딩 
-Adata$gender[Adata$gender=='②']<-2 # gender의 재코딩 
------------------------------------------------------
-재코딩 방법2: FOR문을 사용한 재코딩 
-Adata$gender2<-NA # gender의 재코딩 값을 기록할 변수 지정 
-n<-nrow(Adata) 
-for(i in 1:n){ 
-   if(Adata$gender[i]=='①')  {Adata$gender2[i]<- 1} 
-   else if(Adata$gender[i]=='②')  {Adata$gender2[i]<- 2} 
-   else {Adata$gender2[i] <- NA} 
-} 
------------------------------------------------------
-더미변수 만들기 -- 방법1 
-Adata<-read_excel('자료1.xlsx') 
-Adata$dums<-ifelse(Adata$성별==1, 1, 0), 
------------------------------------------------------
-더미변수 만들기 -- 방법2 
-library(aj412s)
-Adata$dums<-mkdum(Adata$브랜드) # V2변수의 레코드가 문자character", '\n')
-Adata$dums<-mkdum(Adata$성별) # V3변수의 레코드가 숫자numeric", '\n')
------------------------------------------------------
+sum(Adata$브랜드=='Ford')
+
+colnames(BasicData)<-c('id','brand','conv','satprice','age','gender')
+colnames(BasicData)[6]<-c('성별')
+
+
+## 더미변수 만들기 -------
+library(aj412s) 
+df<-data(BasicData)
+tmp<-mkdum(df$age)
+#  Insert dummy variable name : ddt
+df<-cbind(df, tmp)
+
+## Grouping변수 만들기 -------
+cn<-c(2,4)
+tmp<-mkgroup(df2$satprice, cn)
+#  Insert group variable name : group
+#  Cutting Numbers : 2 4 
+df<-cbind(df, tmp)
+
+## 결과의 저장 -------
 sink('결과저장.csv') 
   …… 
 sink() 
@@ -61,7 +65,6 @@ Adata%>%group_by(브랜드)%>%summarize(편의성평균=mean(편의성, na.rm=T)
 Adata%>%select(브랜드, 편의성)
 Adata %>% filter(변수E==2015 & (변수F=='C' | 변수F=='G') )
 Adata%>%arrange(연령대)
-Adata%>%arrange(desc(연령대))
 Adata2<-rename(Adata, 새변수명=편의성)
 merge(data0, data1, by='index')%>%merge(data2, by='index')%>%merge(data3, by='index')
 -----------------------------------------------------

@@ -1,4 +1,5 @@
-# 문자열을 numeric으로  
+# Converting character into numeric
+
 c2n <- function(x){   
      groups = unique(x)   
      groups= sort(groups)

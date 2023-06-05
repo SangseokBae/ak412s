@@ -9,12 +9,8 @@ How to make index variable by using mkindex
 }
 \examples{
 
-# 명령문
-Adata <- mkna(Adata)
+# How To Use
 
-Insert group variable:   
-
-# group variable명으로 인덱스 변수의 변수명을 지정함
-
+  Adata$index<-mkindex(Adata) 
 
 }
