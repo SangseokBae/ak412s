@@ -1,26 +1,27 @@
-cor2 <- function(x, y, z, selecting_z=0){
- temp<-cbind(x,y,z)
- temp<-as.data.frame(temp)
- cat(' #############', '\n')
- cat(' How to use: cor2(x, y, z, 0) No selection. Removing NA/Inf/-Inf, then calc correlation', '\n')
- cat(' How to use: cor2(x, y, z, k) Selecting z=k. Removing NA/Inf/-Inf, then calc correlation', '\n')
- cat(' #############', '\n')
- cat(' Number of Data:', nrow(temp), '\n')
-  if(selecting_z==0) { 
-       tempx<-temp[complete.cases(temp), ]
-       cat('No selection. Removing NA, Number of Data:', nrow(tempx), '\n') }
- else{ tempx<-temp[temp$z == selecting_z, ]
-       tempx<-tempx[complete.cases(tempx), ]}
- 
- if(selecting_z==0) {cat('NO selection. Removing NA, Number of Data:', nrow(tempx), '\n')}
- else{  cat('YES selection. Removing NA, Number of Data :', nrow(tempx), '\n')}
- 
- tempx<-tempx[tempx$x != Inf, ]
- tempx<-tempx[tempx$x != -Inf, ]
- tempx<-tempx[tempx$y != Inf, ]
- tempx<-tempx[tempx$y != -Inf, ]
- tempx<-tempx[tempx$y != '', ]
- cat('YES selection. Removing NA/Inf/-Inf/Blank, Number of Data:', nrow(tempx), '\n')
- cat('YES selection. Removing NA/Inf/-Inf/Blank, Calc correlation', '\n')
- answer <- cor(tempx$x, tempx$y)
-return(answer) }
+cor2<-function(k0_dataset){
+
+MYc2n <- function(x){
+     groups = unique(x)
+     groups= sort(groups)
+     tmp<-as.numeric(factor(x, levels=groups))
+     return(tmp) }
+
+k8_dataset<-k0_dataset
+col_numbers<-ncol(k8_dataset)
+
+for(i in 1:col_numbers){
+if(class(k8_dataset[,i])=="character") {k8_dataset[,i]<-MYc2n(k8_dataset[,i])}
+k8_dataset[,i][k8_dataset[,i] == Inf]<-NA
+k8_dataset[,i][k8_dataset[,i] == -Inf]<-NA
+k8_dataset[,i][k8_dataset[,i] == '']<-NA
+}
+
+k8_dataset<-k8_dataset[complete.cases(k8_dataset), ]
+cat('*** Number of Data : ', nrow(k8_dataset), '\n')
+
+MYcorrelation1<-round( cor(k8_dataset, method='pearson') , 2)
+MYcorrelation2<-MYcorrelation1
+MYcorrelation2[lower.tri(MYcorrelation1)] <- ''
+MYcorrelation3<-as.data.frame(MYcorrelation2)
+return(MYcorrelation3)
+} 
