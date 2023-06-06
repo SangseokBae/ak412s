@@ -1,0 +1,15 @@
+\name{diff_panel}
+\alias{diff_panel}
+\title{diff_panel}
+\usage{
+diff_panel()
+}
+\description{
+differencing panel dataset
+}
+\examples{
+
+tmp<-diff_panel(panel_dataset, 4)
+
+
+}
