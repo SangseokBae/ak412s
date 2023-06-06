@@ -20,7 +20,7 @@ colnames(tmp_02dataset)[i_X0_no]<-paste0(ans,i_X0_no, sep='' )
 }
 
 return(tmp_02dataset)
-
+rm(tmp_02dataset,i_X0_no,number_column, tmp_var, TMP_Origin_data, tmp_01dataset)
 }
 
 

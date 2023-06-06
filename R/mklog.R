@@ -30,5 +30,5 @@ else {df_logdataset[i, j+ncolumns]<- ( -1*log(-1*df_logdataset[i,j]))}
 df_logdataset <-df_logdataset[ , -c(1:ncolumns)]
 
 return(df_logdataset)
-
+rm(df_logdataset, n, j, ncolumns, i, tmp_df_logdataset)
 }
