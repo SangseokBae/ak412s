@@ -3,6 +3,17 @@ diff_panel<-function(AdataSet, T){
 ## AdataSet = name of dataset, 2019~2022 : T=4
 ## dplyr package::lag()
 
+
+ncolumns<-ncol(AdataSet)
+
+if(is.null(ncolumns)) {
+ncolumns<-1
+n<-length(AdataSet)
+tmp_AdataSet<-rep(1,n)
+AdataSet<-cbind(AdataSet, tmp_AdataSet)}
+
+AdataSet<-as.data.frame(AdataSet)
+
 LagAdataSet<-dplyr::lag(AdataSet)
 
 df_pdata<-AdataSet-LagAdataSet
