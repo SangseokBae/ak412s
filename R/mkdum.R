@@ -19,8 +19,8 @@ for(i_X0_no in 1:number_columns){
 colnames(tmp_02dataset)[i_X0_no]<-paste0(ans,i_X0_no, sep='' )
 }
 
-return(as.data.frame(tmp_02dataset))
-rm(TMP_Origin_data, tmp_01dataset, tmp_02dataset, ans, number_columns, i_X0_no)
+return(tmp_02dataset)
+
 }
 
 
