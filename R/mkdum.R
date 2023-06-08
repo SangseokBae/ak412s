@@ -4,10 +4,9 @@
 # Adata에 새로 생성되는 변수: gender1, gender2
 
 mkdum<-function(TMP_Origin_data){
-tmp_01dataset <- as.vector(TMP_Origin_data)
-tmp_01dataset <- data.frame(tmp_01dataset)
+tmp_01dataset <- data.frame(TMP_Origin_data)
 colnames(tmp_01dataset)[1]<-"tmp_var"
-tmp_01dataset$tmp_var[is.na(tmp_01dataset$tmp_var)]<-"NA"
+tmp_01dataset$tmp_var[is.na(tmp_01dataset$tmp_var)]<-NA
 tmp_01dataset$tmp_var<-factor(tmp_01dataset$tmp_var)
 tmp_02dataset<-model.matrix(~tmp_var-1, tmp_01dataset)
 tmp_02dataset<-as.data.frame(tmp_02dataset)
