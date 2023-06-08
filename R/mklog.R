@@ -1,12 +1,15 @@
 mklog<-function(df_logdataset){
 
+df_logdataset<-as.data.frame(df_logdataset)
+
 ncolumns<-ncol(df_logdataset)
 
-if(is.null(ncolumns)) {
+if(ncolumns==1) {
 ncolumns<-1
 n<-length(df_logdataset)
 tmp_df_logdataset<-rep(1,n)
 df_logdataset<-cbind(df_logdataset, tmp_df_logdataset)}
+
 else{
 n<-nrow(df_logdataset)
 df_logdataset<-cbind(df_logdataset, df_logdataset)}
