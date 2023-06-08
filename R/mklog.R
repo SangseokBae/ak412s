@@ -5,10 +5,9 @@ df_logdataset<-as.data.frame(df_logdataset)
 ncolumns<-ncol(df_logdataset)
 
 if(ncolumns==1) {
-ncolumns<-1
-n<-length(df_logdataset)
+n<-nrow(df_logdataset)
 tmp_df_logdataset<-rep(1,n)
-df_logdataset<-cbind(df_logdataset, tmp_df_logdataset)}
+df_logdataset<-cbind(df_logdataset,tmp_df_logdataset)}
 
 else{
 n<-nrow(df_logdataset)
@@ -30,6 +29,7 @@ else if(df_logdataset[i,j]>0) {df_logdataset[i, j+ncolumns]<-log(df_logdataset[i
 else {df_logdataset[i, j+ncolumns]<- ( -1*log(-1*df_logdataset[i,j]))} 
  }
 }
+
 df_logdataset <-df_logdataset[ , -c(1:ncolumns)]
 
 return(df_logdataset)
