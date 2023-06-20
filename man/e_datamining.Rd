@@ -123,7 +123,7 @@ df$거래금액<-gsub(',', '', df$거래금액)
 df$거래금액<-as.numeric(df$거래금액)
 
 -----------------------------------------------------
-year, month, 01을 연결해 날짜변수date0 만들기", '\n')
+year, month, 01을 연결해 날짜변수date0 만들기
 df$month2<-sprintf('-%02d', df$month)
 df$date0<-paste0(df$year, df$month2, '-01')
 df$date0<-as.Date(df$date0)
