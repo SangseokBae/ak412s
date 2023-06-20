@@ -9,7 +9,11 @@ Making log dataset
 }
 \examples{
 
-tmp<-mklog(Adata[,c(3:6)])
+## make log data for one varialbe
+df12$logdebt<-mklog(df12$debt)
 
+## make log data for various varialbe
+tmp<-mklog(df12[,c(5:8)])
+df12<-cbind(df12, tmp)
 
 }

@@ -11,6 +11,6 @@ How to make index variable by using mkindex
 
 # How To Use
 
-  Adata$index<-mkindex(Adata) 
+  df$index<-mkindex(df) 
 
 }

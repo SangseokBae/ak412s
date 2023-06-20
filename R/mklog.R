@@ -32,6 +32,10 @@ else {df_logdataset[i, j+ncolumns]<- ( -1*log(-1*df_logdataset[i,j]))}
 
 df_logdataset <-df_logdataset[ , -c(1:ncolumns)]
 
+if(ncolumns==1) {
+df_logdataset<-as.vector(df_logdataset) }
+else { df_logdataset<-as.data.frame(df_logdataset) }
+
 return(df_logdataset)
-rm(df_logdataset, n, j, ncolumns, i, tmp_df_logdataset)
+
 }

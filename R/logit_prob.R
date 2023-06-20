@@ -1,6 +1,6 @@
 ## 활용법: Logit_prob(로짓결과)
 
-logit_prob <- function( LogitResult, my_input=c(1) ){
+Logit_prob <- function( LogitResult, my_input=c(1) ){
 r=c()
 max.ylev<-2
 nvariables<-LogitResult$rank

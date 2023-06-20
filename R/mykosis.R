@@ -6,9 +6,7 @@
 # Adata <- Kosisdata
 # 원자료에서 V1(지역명)이 NA로 표기된 것은 앞의 레코드로 채워넣는다
 # na.locf = NA Last Observation Carried Forward
-# zoo패키지의 na.locf명령문을 사용
 # Adata$V1<-zoo::na.locf(Adata$V1)
-# Re-arrange Kosis Data
 # NewData<-mykosis(Adata)
 # ------------------------------------------------------
 

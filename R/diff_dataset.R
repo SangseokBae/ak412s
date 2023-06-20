@@ -1,18 +1,18 @@
-diff_panel<-function(AdataSet, T){
+diff_dataset<-function(AdataSet, T){
 
 ## AdataSet = name of dataset, 2019~2022 : T=4
 ## dplyr package::lag()
 
-
+AdataSet<-as.data.frame(AdataSet)
 ncolumns<-ncol(AdataSet)
 
-if(is.null(ncolumns)) {
-ncolumns<-1
-n<-length(AdataSet)
+if(ncolumns==1) {
+col_marking<-1}
+
+if(ncolumns==1) {
+n<-nrow(AdataSet)
 tmp_AdataSet<-rep(1,n)
 AdataSet<-cbind(AdataSet, tmp_AdataSet)}
-
-AdataSet<-as.data.frame(AdataSet)
 
 LagAdataSet<-dplyr::lag(AdataSet)
 
@@ -38,6 +38,8 @@ ans <- "d_"
 tmp_name<-colnames(df_pdata)[i]
 colnames(df_pdata)[i]<-paste0(ans,tmp_name, sep='' )
 }
+
+if(col_marking==1){df_pdata<-df_pdata[,-c(2)]}
 
 return(df_pdata)
 }

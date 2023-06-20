@@ -4,6 +4,14 @@
 
 mkgroup<-function(target_variable, CuttingNumber) {
   
+  c2n <- function(x_x01){   
+     groups = unique(x_x01)   
+     groups= sort(groups)
+     tmp<-as.numeric(factor(x_x01, levels=groups))
+	 return(tmp) }
+
+  if( class(target_variable) == 'character') {target_variable<-c2n(target_variable)}
+  
   CuttingNumber <- as.vector(CuttingNumber)
     
   nx_0<-length(target_variable)
