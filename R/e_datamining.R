@@ -2,6 +2,13 @@ e_datamining<-function(explaining=0){
 
 if(explaining==0) {
 cat("  ", '\n')
+cat("## 파일로딩하기 ------- ", '\n')
+cat("library(tidyverse) ", '\n')
+cat("df<-read.csv(file.choose(), skip=1, header=T, fileEncoding='CP949', encoding='UTF-8') ", '\n')
+cat(" ", '\n')
+cat("library(readxl) ", '\n')
+cat("df<-read_excel(file.choose(), skip=1) ", '\n')
+cat(" ", '\n')
 cat("## 자료에 NA가 있으면, na.rm=T 사용 -------   ", '\n')
 cat("## 일부 변수를 선택해 새데이터셋 만들기 ------- ", '\n')
 cat("index <- c(2,4:6) ", '\n')

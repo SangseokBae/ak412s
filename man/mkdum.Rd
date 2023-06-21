@@ -9,19 +9,19 @@ Making dummy variables -- Original record is character
 }
 \examples{
 
-## mkdum()ì„ ì‚¬ìš©í•˜ë ¤ë©´ ì…ë ¥ë³€ìˆ˜ í˜•íƒœëŠ” ë°˜ë“œì‹œ numeric()
-## ì…ë ¥ë³€ìˆ˜ í˜•íƒœê°€ character()ì´ë©´ numeric()ìœ¼ë¡œ ë³€ê²½
+## mkdum()À» »ç¿ëÇÏ·Á¸é ÀÔ·Âº¯¼ö ÇüÅÂ´Â ¹İµå½Ã numeric()
+## ÀÔ·Âº¯¼ö ÇüÅÂ°¡ character()ÀÌ¸é numeric()À¸·Î º¯°æ
 
 ## NOT Working command
 # Adata$edu_dums<-cbind(Adata, mkdum(Adata$edu))
 # Adata$edu_dums(X) -> Adata(O)
 
 ## How To Use:
-# NAë¶€í„° ì œê±°
+# NAºÎÅÍ Á¦°Å
 Adata<-Adata[complete.cases(Adata), ]
 Adata<-cbind(Adata, mkdum(Adata$gender))
-Insert dummy variable name : ë™ì¼í•œ ë³€ìˆ˜ëª…ì„ ì…ë ¥
-Adataì— ìƒˆë¡œ ìƒì„±ë˜ëŠ” ë³€ìˆ˜: gender1, gender2
+Insert dummy variable name : µ¿ÀÏÇÑ º¯¼ö¸íÀ» ÀÔ·Â
+Adata¿¡ »õ·Î »ı¼ºµÇ´Â º¯¼ö: gender1, gender2
 
   
 }

@@ -9,7 +9,14 @@ e_datamining Program
 }
 \examples{
 
-## 변수를 선택해서 새 데이터셋으로 만들기
+## 파일로딩하기 -------
+library(tidyverse)
+df<-read.csv(file.choose(), skip=1, header=T, fileEncoding='CP949', encoding='UTF-8')
+
+library(readxl)
+df<-read_excel(file.choose(), skip=1)
+
+## 변수를 선택해서 새 데이터셋으로 만들기 -------
 인덱스 <- c(2,4,6)
 새데이터셋 <- df[ , 인덱스]
 
